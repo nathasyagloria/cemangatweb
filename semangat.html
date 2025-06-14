@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cemangat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-light-blue: #D6E6F2; 
+            --text-dark: #4A5568; 
+            --text-light: #F7FAFC; 
+            --accent-pink: #FFC0CB; 
+            --sparkle-yellow: #FFD700;
+            --font-heading: 'Pacifico', cursive; 
+            --font-body: 'Quicksand', sans-serif; 
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-body);
+            background-color: var(--bg-light-blue);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        main#mainContent {
+            flex-grow: 1;
+            position: relative;
+            width: 100%;
+        }
+
+        
+        .intro-section {
+            position: relative;
+            min-height: 100vh; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden; 
+        }
+
+        .background-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0; 
+        }
+
+        .background-elements img {
+            position: absolute;
+            object-fit: contain;
+            opacity: 0.8; 
+        }
+
+        .bg-rabbit-left {
+            top: 0;
+            left: -5%; 
+            width: 400px;
+            max-width: 25%;
+        }
+        .bg-disc {
+            top: 0;
+            right: 5%; 
+            width: 200px;
+            max-width: 12%;
+        }
+        .bg-rabbit-right {
+            bottom: 15%; 
+            right: 2%; 
+            width: 250px;
+            max-width: 20%;
+        }
+
+        /* Gambar baru ditambahkan di sini */
+        .kelinci-putih-bunga {
+            top: -5%;
+            left: -5%;
+            width: 180px;
+            max-width: 25%;
+            opacity: 0.8;
+            transform: rotate(-10deg);
+        }
+
+        .kelinci-coklat-keranjang {
+            bottom: -5%;
+            right: -5%;
+            width: 180px;
+            max-width: 25%;
+            opacity: 0.8;
+            transform: rotate(10deg);
+        }
+
+        .bunga-tulip-pink {
+            bottom: -10%; /* Sedikit keluar dari bawah */
+            left: -10%; /* Sedikit keluar dari kiri */
+            width: 150px;
+            max-width: 20%;
+            opacity: 0.7; /* Sedikit lebih transparan */
+        }
+
+        .kupu-kupu-pink {
+            top: -15%; /* Sedikit keluar dari atas */
+            right: -15%; /* Sedikit keluar dari kanan */
+            width: 180px;
+            max-width: 22%;
+            opacity: 0.7; /* Sedikit lebih transparan */
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1; 
+            max-width: 900px;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .text-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .text-block h1 {
+            font-family: var(--font-heading);
+            font-size: 3.8em; 
+            color: var(--text-dark);
+            line-height: 1.1;
+            margin: 0 0 20px 0; 
+            text-align: center;
+        }
+
+        .description {
+            font-size: 1.05em;
+            color: var(--text-dark);
+            text-align: center;
+            max-width: 650px; 
+            margin: 0;
+        }
+
+        .call-to-action-container {
+            margin-top: 5vh; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none; 
+        }
+
+        .call-to-action {
+            font-family: var(--font-heading);
+            font-size: 2em;
+            color: var(--accent-pink);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            animation: bounce 2s infinite ease-in-out;
+            margin-bottom: 10px; 
+        }
+
+        .scroll-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--accent-pink);
+            font-size: 0.9em;
+            animation: fadeInOut 2s infinite ease-in-out;
+        }
+
+        .scroll-indicator .fa-arrow-down {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        
+        .flower-reveal-section {
+            min-height: 100vh; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            position: relative; 
+            overflow: hidden;
+            opacity: 0; 
+            transform: translateY(50px); 
+            transition: opacity 1s ease-out, transform 1s ease-out; 
+        }
+        .flower-reveal-section.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .lily-flower-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1; 
+        }
+
+        .lily-flower {
+            width: 500px; 
+            max-width: 85%;
+            height: auto;
+            display: block;
+            margin-bottom: 30px;
+            
+            opacity: 0; 
+            transform: scale(0.8); 
+            transition: opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s; 
+        }
+        .flower-reveal-section.in-view .lily-flower {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .flower-message {
+            font-family: var(--font-body);
+            font-size: 1.2em;
+            color: var(--text-dark);
+            text-align: center;
+            max-width: 550px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out 0.8s, transform 1s ease-out 0.8s; 
+        }
+        .flower-reveal-section.in-view .flower-message {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        
+        .sparkle-area {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+            width: 600px; 
+            height: 600px; 
+            max-width: 90vw;
+            max-height: 90vh;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0; 
+            opacity: 0;
+            transition: opacity 1s ease-out 1.2s; 
+        }
+        .flower-reveal-section.in-view .sparkle-area {
+            opacity: 1;
+        }
+
+        .sparkle {
+            position: absolute;
+            background-color: var(--sparkle-yellow);
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkleFade 1.5s forwards ease-out;
+        }
+
+        @keyframes sparkleFade {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.5); }
+        }
+
+        
+        @media (max-width: 1024px) {
+            .bg-rabbit-left { width: 180px; left: -3%; }
+            .bg-disc { width: 100px; right: -3%; }
+            .bg-rabbit-right { bottom: 12%; width: 160px; right: 0%; }
+
+            .text-block h1 { font-size: 3.2em; margin-bottom: 15px; }
+            .description { font-size: 0.95em; max-width: 600px; }
+            .call-to-action { font-size: 1.8em; }
+            .lily-flower { width: 350px; }
+            .flower-message { font-size: 1.1em; max-width: 500px; }
+            .sparkle-area { width: 500px; height: 500px; }
+        }
+
+        @media (max-width: 768px) {
+            .bg-rabbit-left { width: 120px; top: 5px; left: -5%; }
+            .bg-disc { width: 80px; top: 5px; right: -5%; }
+            .bg-rabbit-right { bottom: 8%; width: 120px; right: -5%; }
+
+            .text-block h1 { font-size: 2.5em; margin-bottom: 10px; }
+            .description { font-size: 0.9em; max-width: 90%; }
+            .call-to-action { font-size: 1.6em; }
+            .lily-flower { width: 280px; margin-bottom: 20px; }
+            .flower-message { font-size: 1em; max-width: 90%; }
+            .flower-reveal-section { min-height: 70vh; }
+            .sparkle-area { width: 400px; height: 400px; }
+        }
+
+        @media (max-width: 480px) {
+            .bg-rabbit-left { width: 90px; left: -10%; }
+            .bg-disc { width: 60px; right: -10%; }
+            .bg-rabbit-right { bottom: 5%; width: 90px; right: -10%; }
+
+            .text-block h1 { font-size: 1.8em; }
+            .description { font-size: 0.8em; }
+            .call-to-action { font-size: 1.3em; }
+            .lily-flower { width: 220px; }
+            .flower-message { font-size: 0.9em; }
+            .flower-reveal-section { min-height: 60vh; }
+            .sparkle-area { width: 300px; height: 300px; }
+        }
+    </style>
+
+</head>
+<body>
+
+    <main id="mainContent">
+        <section class="intro-section">
+            <div class="background-elements">
+                <img src="assets/ban kiri.png" alt="Cute Rabbit" class="bg-rabbit-left">
+                <img src="assets/kupu2.png" alt="Vintage Disc" class="bg-disc">
+                <img src="assets/ban kanan.png" alt="Cute Rabbit" class="bg-rabbit-right">
+                <img src="assets/http://googleusercontent.com/image_generation_content/10" alt="White Rabbit with Flowers" class="kelinci-putih-bunga">
+                <img src="assets/http://googleusercontent.com/image_generation_content/9" alt="Brown Rabbit with Basket" class="kelinci-coklat-keranjang">
+            </div>
+            <div class="content-wrapper">
+                <div class="text-block">
+                    <h1>Hope You're Doing Well Today</h1>
+                    <p class="description">Ada hari yang tenang, ada juga yang berat, tapi semuanya tetap layak dijalani, pelan-pelan, satu napas, satu langkah. Semoga hari ini jadi ruang yang ramah buat kamu, Rassya. Dan semoga bisa kembali berjalan tanpa beban di dada.</p>
+                </div>
+                <div class="call-to-action-container">
+                    <p class="call-to-action">I have something for you!</p>
+                    <div class="scroll-indicator">
+                        <i class="fas fa-arrow-down"></i>
+                        <span>SCROLL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="flower-reveal-section" id="flowerRevealSection">
+            <div class="lily-flower-container">
+                <img src="assets/lily2.png" alt="Beautiful Lily Flower" class="lily-flower" id="lilyFlower">
+                <div class="sparkle-area" id="sparkleArea"></div> </div>
+            <p class="flower-message" id="flowerMessage">This flower's for you, just a little reminder that you're doing so well</p>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const flowerRevealSection = document.getElementById('flowerRevealSection');
+            const sparkleArea = document.getElementById('sparkleArea');
+
+            
+            const sectionObserverOptions = {
+                root: null, 
+                rootMargin: '0px',
+                threshold: 0.1 
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        flowerRevealSection.classList.add('in-view');
+                        observer.unobserve(flowerRevealSection); 
+                    }
+                });
+            }, sectionObserverOptions);
+
+            sectionObserver.observe(flowerRevealSection); 
+
+            
+            function createSparkle() {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+
+                const x = Math.random() * sparkleArea.offsetWidth;
+                const y = Math.random() * sparkleArea.offsetHeight;
+
+                sparkle.style.left = `${x}px`;
+                sparkle.style.top = `${y}px`;
+                sparkle.style.width = `${Math.random() * 8 + 4}px`; 
+                sparkle.style.height = sparkle.style.width;
+
+                sparkleArea.appendChild(sparkle);
+
+                sparkle.addEventListener('animationend', () => {
+                    sparkle.remove();
+                });
+            }
+
+            let sparkleIntervalId;
+            const sparkleActivationObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (!sparkleIntervalId) { 
+                            sparkleIntervalId = setInterval(createSparkle, 200); 
+                        }
+                    } else {
+                        clearInterval(sparkleIntervalId);
+                        sparkleIntervalId = null;
+                        document.querySelectorAll('.sparkle').forEach(s => s.remove());
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 
+            });
+
+            sparkleActivationObserver.observe(sparkleArea); 
+
+
+            
+            const adjustBodyHeight = () => {
+                const totalContentHeight = document.documentElement.scrollHeight;
+                const viewportHeight = window.innerHeight;
+                
+               
+                document.body.style.minHeight = `${Math.max(viewportHeight, totalContentHeight)}px`;
+            };
+
+            
+            window.addEventListener('load', adjustBodyHeight);
+            window.addEventListener('resize', adjustBodyHeight);
+            
+            
+            const allImages = document.querySelectorAll('img');
+            let imagesLoaded = 0;
+            allImages.forEach(img => {
+                if (img.complete) {
+                    imagesLoaded++;
+                } else {
+                    img.addEventListener('load', () => {
+                        imagesLoaded++;
+                        if (imagesLoaded === allImages.length) {
+                            adjustBodyHeight();
+                        }
+                    });
+                }
+            });
+            if (imagesLoaded === allImages.length) {
+                adjustBodyHeight();
+            }
+
+            flowerRevealSection.addEventListener('transitionend', adjustBodyHeight);
+        });
+    </script>
+</body>
+</html>
